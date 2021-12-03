@@ -48,62 +48,33 @@ def power(values, r):
     
     return [gamma, epsilon]
 
-def lifeSupportOxy(values, r):
+def lifeSupport(values, bit_count, less):
 
-    oxy_list = values
-    for i in reversed(range(r)):
-        half = len(oxy_list)*0.5
-        bit_count = countBit(oxy_list, i)
+    filtered_list = values
+
+    for i in reversed(range(bit_count)):
+        half = len(filtered_list)*0.5
+        bit_count = countBit(filtered_list, i)
         next_list = []
-        #print("i:", i, "bit count:", bit_count)
-        #print("half:", half)
 
-        for v in oxy_list:
-            if bit_count >= half:
+        if less:
+            check_set = bool(bit_count < half)
+        else:
+            check_set = bool(bit_count >= half)
+
+        for v in filtered_list:
+            if check_set:
                 if is_set(v, i) == 1:
-                    #print("append 1:", v, "|", bin(v))
                     next_list.append(v)
-            elif bit_count < half:
+                    #print("append :", v, "|", bin(v))
+            else:
                 if is_set(v, i) == 0:
-                    #print("append 0:", v, "|", bin(v))
                     next_list.append(v)
-        oxy_list = next_list
-        if len(oxy_list) == 1:
+                    #print("append :", v, "|", bin(v))
+        filtered_list = next_list
+        if len(filtered_list) == 1:
             break
-
-    print("len", len(oxy_list))
-    v = oxy_list[0]
-    print("oxy ", v, "|", bin(v))
-    return v
-
-def lifeSupportCO2(values, r):
-
-    co2_list = values
-    for i in reversed(range(r)):
-        half = len(co2_list)*0.5
-        bit_count = countBit(co2_list, i)
-        next_list = []
-        #print("i:", i, "bit count:", bit_count)
-        #print("half:", half)
-
-        for v in co2_list:
-            if bit_count >= half:
-                if is_set(v, i) == 0:
-                    #print("append 1:", v, "|", bin(v))
-                    next_list.append(v)
-            elif bit_count < half:
-                if is_set(v, i) == 1:
-                    #print("append 0:", v, "|", bin(v))
-                    next_list.append(v)
-        co2_list = next_list
-        if len(co2_list) == 1:
-            break
-
-    print("len", len(co2_list))
-    v = co2_list[0]
-    print("co2 ", v, "|", bin(v))
-
-    return v
+    return filtered_list[0]
 
 file_path = os.path.join(os.getcwd(), "test.txt")
 values = readValues(file_path)
@@ -113,10 +84,9 @@ print("gamma:", gamma)
 print("eps:", epsilon)
 print("prod:", gamma*epsilon)
 
-oxy = lifeSupportOxy(values, 5)
+oxy = lifeSupport(values, 5, False)
+co2 = lifeSupport(values, 5, True)
 print("oxy:", oxy)
-
-co2 = lifeSupportCO2(values, 5)
 print("co2:", co2)
 
 file_path = os.path.join(os.getcwd(), "input.txt")
@@ -125,11 +95,10 @@ values = readValues(file_path)
 
 print("gamma:", gamma)
 print("eps:", epsilon)
-print("prod:", gamma*epsilon)
+print("prod:", gamma*epsilon,"\n")
 
-oxy = lifeSupportOxy(values, 12)
+oxy = lifeSupport(values, 12, False)
+co2 = lifeSupport(values, 12, True)
 print("oxy:", oxy)
-
-co2 = lifeSupportCO2(values, 12)
 print("co2:", co2)
 print("prod:", oxy*co2)
