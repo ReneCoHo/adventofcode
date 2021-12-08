@@ -9,6 +9,7 @@ def set_bit(x, n):
     return x | (1<<n)
 
 def readValues(file_path):
+    print("read file:", file_path)
     file_in = open(file_path, 'r')
     values = []
     for line in file_in:
@@ -76,7 +77,9 @@ def lifeSupport(values, bit_count, less):
             break
     return filtered_list[0]
 
-file_path = os.path.join(os.getcwd(), "test.txt")
+path = os.path.dirname(__file__)
+
+file_path = os.path.join(path, "test.txt")
 values = readValues(file_path)
 [gamma, epsilon] = power(values, 5)
 
@@ -89,7 +92,7 @@ co2 = lifeSupport(values, 5, True)
 print("oxy:", oxy)
 print("co2:", co2)
 
-file_path = os.path.join(os.getcwd(), "input.txt")
+file_path = os.path.join(path, "input.txt")
 values = readValues(file_path)
 [gamma, epsilon] = power(values, 12)
 

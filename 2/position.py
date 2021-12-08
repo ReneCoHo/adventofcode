@@ -48,20 +48,21 @@ def moveBoot(file_path):
     file_in.close()
     return position
 
+path = os.path.dirname(__file__)
 
-file_path = os.path.join(os.getcwd(), "input.txt")
+file_path = os.path.join(path, "input.txt")
 moves = readMoves(file_path)
 position = movePoint(moves)
 
 print("x:", position[0], " y:", position[1])
 print("p:", position[0]*position[1])
 
-file_path = os.path.join(os.getcwd(), "test.txt")
+file_path = os.path.join(path, "test.txt")
 position = moveBoot(file_path)
 print("x:", position[0], " y:", position[1])
 print("p:", position[0]*position[1])
 
-file_path = os.path.join(os.getcwd(), "input.txt")
+file_path = os.path.join(path, "input.txt")
 position = moveBoot(file_path)
 print("x:", position[0], " y:", position[1])
 print("p:", position[0]*position[1])

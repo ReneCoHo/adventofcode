@@ -44,8 +44,9 @@ def countWindow(sweeps):
 
     return count
 
+path = os.path.dirname(__file__)
 
-file_path = os.path.join(os.getcwd(), "input.txt")
+file_path = os.path.join(path, "input.txt")
 sweeps = readSweeps(file_path)
 
 count = countSimple(sweeps)
