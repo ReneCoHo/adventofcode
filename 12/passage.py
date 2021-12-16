@@ -1,5 +1,4 @@
 #!/usr/bin/python
-import io
 import os
 
 #https://pypi.org/project/networkx/
