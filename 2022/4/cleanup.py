@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import os
 
-
 def totalOverlapping(lines):
     count=0
     for line in lines:
