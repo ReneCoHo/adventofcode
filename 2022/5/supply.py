@@ -34,13 +34,14 @@ for j in range(len(line_stacks)-1, -1, -1):
         stacks[i+1].append(letter)
 
 for n, i, j in moves:
-	chunk = stacks[i][-n:]
-	stacks[i] = stacks[i][:-n]
-	stacks[j] = stacks[j] + chunk[::-1]
+    chunk = stacks[i][-n:]
+    stacks[i] = stacks[i][:-n]
+    stacks[j] = stacks[j] + chunk           # second
+    #stacks[j] = stacks[j] + chunk[::-1]    # first
 
-top = ''.join(s[0] for s in stacks[:][-1])
-
+op = stacks[1:]
+top = ''.join(s[-1] for s in op[::])
 print(top)
-#FBVRFHNSB
-#BCRHWLBQMQP
-# BSDMQFLSP
+
+#BSDMQFLSP
+#PGSQBFLDP
