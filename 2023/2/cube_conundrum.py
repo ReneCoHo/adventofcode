@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import os
-import numpy as np
 
 path = os.path.dirname(__file__)
 file_path = os.path.join(path, "input.txt")
