@@ -41,6 +41,15 @@ def checkValid(games, set):
             sum += id+1
     return sum
 
+def calcPower(games):
+    power = 0
+    for game in games:
+        p = 1
+        for color in game:
+            p = p*game[color]
+        power += p
+    return power
+
 with open(file_path) as f:
     lines = f.readlines()
 
@@ -50,6 +59,5 @@ validSum = checkValid(games, set)
 
 print("1 sum:", validSum)
 
-#values = readNamedDigits(lines)
-#print(values)
-#print("2 sum:", values.sum())
+power = calcPower(games)
+print("2 sum:", power)
