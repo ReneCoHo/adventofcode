@@ -18,3 +18,11 @@ distances = [295, 1734, 1278, 1210]
 #distances = [9, 40, 200]
 
 print("1:", calcWin(times, distances))
+
+#times = [71530]
+#distances = [940200]
+
+times = [45988373]
+distances = [295173412781210]
+
+print("2:", calcWin(times, distances))
