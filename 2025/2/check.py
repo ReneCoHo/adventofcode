@@ -1,7 +1,14 @@
 #!/usr/bin/env python
-file_path = "D:\\develop\\personal\\AoC\\2025\\2\\input.txt" # 23560874270, 44143124633
-#file_path = "D:\\develop\\personal\\AoC\\2025\\2\\test.txt" # 1227775554
-#file_path = "D:\\develop\\personal\\AoC\\2025\\2\\test2.txt" # 4174379265
+from pathlib import Path
+
+script_dir = Path(__file__).parent
+
+# 1227775554
+file_path = script_dir / "test.txt"
+# 4174379265
+file_path = script_dir / "test2.txt"
+# 23560874270, 44143124633
+file_path = script_dir / "input.txt"
 
 def read(file_path):
     with open(file_path, "r") as file:

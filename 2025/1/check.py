@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 import time
+from pathlib import Path
 
-file_path = "D:\\develop\\personal\\AoC\\2025\\1\\input.txt"
+script_dir = Path(__file__).parent
+# 1129, 6638
+file_path = script_dir / "input.txt"
 
 def read(file_path):
 
