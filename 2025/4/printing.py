@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from typing import List
 from pathlib import Path
+import time
 
 script_dir = Path(__file__).parent
 
@@ -69,7 +70,11 @@ def remove_rolls(diagram : List[List[int]], max_neighbors : int) -> int:
 
 if __name__ == "__main__":
     diagram = read(file_path)
+    start = time.time()
     count = count_less_neighbors(diagram, 4)
     print("Rolls count:", count)
     removed = remove_rolls(diagram, 4)
     print("Rolls removed:", removed)
+
+    end = time.time()
+    print(f"Time: {end - start:.4f} second")
